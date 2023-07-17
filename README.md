@@ -1,5 +1,6 @@
 # Student Academic Success Classification Analysis
 ***
+![md-duran-1VqHRwxcCCw-unsplash](https://github.com/dataeducator/student_academic_success/assets/107881738/7ceeaca1-99f5-41fd-bbf6-9b0b1458d47b)
 
 
 
