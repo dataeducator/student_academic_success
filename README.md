@@ -2,9 +2,6 @@
 ***
 ![md-duran-1VqHRwxcCCw-unsplash](https://github.com/dataeducator/student_academic_success/assets/107881738/7ceeaca1-99f5-41fd-bbf6-9b0b1458d47b)
 
-
-
-
 # Business Understanding:
 * __Stakeholder__: Instituto Politecnico de Portalegre
 * __Business Case__: I have been tasked by the Instituto Politecnico de Portalegre to accurately classify students' academic success. Researchers at the Instituto Politecnico de Portalegre want to reduce the rate of student academic failure in higher education. 
@@ -28,17 +25,26 @@ The University of California (Irvine) hosts a machine learning repository with d
 
 ## Description of Data
 ***
-The data includes information that is known from the time a student enrolls including their:
+The data can be found inthe data folder of this repository includes information that is known from the time a student enrolls including their:
 - academic path
 - demographics
 - social-economic factors
+
+The Instituto Politecnico de Protalegre students' dropout and academic Dataset includes sales data contains data for 4424 students with 37 features including but not limited to:
+| Name               | Description                 |Final Datatype|Numeric or Categorical|Target or Feature|
+|--------------------|-----------------------------|---------|-------------------------|-----------------|
+| <code>Marital status</code>    |Unique identifier for a house| <code>int</code>|Categorical|Feature|
+| <code>Application order</code>|School choice rank on a scale of 0 to 9|<code>int</code>| Categorical|Feature|
+| <code>Previous qualification</code>|Hghest|<code>int</code>|Categorical|Feature|
+| <code>Age at enrollment</code>|Student age at enrollment|<code>int</code>|Numeric|Feature|
+| <code> Target</code>| academic status in one of three classes: dropout, enrolled, graduate|<code>string</code>|Categorical|Target|
 
 There are three classifications of students within this dataset:
 - dropout
 - enrolled
 - graduate
 
-The data was preprocessed to address missing values and anomalies. The dataset has __37__ columns with __4424__ rows of data. I am going to use a minimum of 4 machine learning algorithms to classify this data and will also use exploration to determine the following guiding quesions:
+The data was preprocessed to address missing values and anomalies. I am going to use a minimum of 4 machine learning algorithms to classify this data and will also use exploration to determine the following guiding quesions:
 
 - How does marital status influece the likelihoon of students graduating on time?
 - Does the timely payment of tuition fees have any impact on the graduation status of students?
@@ -91,7 +97,7 @@ paragraph with callouts
 *
 *
 
-Please review my full analysis in [my Jupyter notebook](https://github.com/dataeducator/student_academic_success/tree/main) or [my presentation](link to pdf of presentation).
+Please review my full analysis in [my Jupyter notebook](https://github.com/dataeducator/student_academic_success/blob/main/student_academic_success.ipynb) or [my presentation](link to pdf of presentation).
 You may reach out to __Tenicka Norwood__ at tenicka.norwood@gmail.com if you have additional questions.
 
 # Repository Structure
