@@ -25,17 +25,17 @@ The University of California (Irvine) hosts a machine learning repository with d
 
 ## Description of Data
 ***
-The data can be found inthe data folder of this repository includes information that is known from the time a student enrolls including their:
+The data can be found in the data folder of this repository includes information that is known from the time a student enrolls until their second semester of enrollment including their:
 - academic path
 - demographics
 - social-economic factors
 
-The Instituto Politecnico de Protalegre students' dropout and academic Dataset includes sales data contains data for 4424 students with 37 features including but not limited to:
+The Instituto Politecnico de Protalegre students' dropout and academic Dataset includes sales data contains data for __4424 students with 37 features__ including but not limited to:
 | Name               | Description                 |Final Datatype|Numeric or Categorical|Target or Feature|
 |--------------------|-----------------------------|---------|-------------------------|-----------------|
 | <code>Marital status</code>    |Unique identifier for a house| <code>int</code>|Categorical|Feature|
 | <code>Application order</code>|School choice rank on a scale of 0 to 9|<code>int</code>| Categorical|Feature|
-| <code>Previous qualification</code>|Hghest|<code>int</code>|Categorical|Feature|
+| <code>Previous qualification</code>|Highest degree level prior to enrollment|<code>int</code>|Categorical|Feature|
 | <code>Age at enrollment</code>|Student age at enrollment|<code>int</code>|Numeric|Feature|
 | <code> Target</code>| academic status in one of three classes: dropout, enrolled, graduate|<code>string</code>|Categorical|Target|
 
