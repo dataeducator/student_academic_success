@@ -61,15 +61,15 @@ In order to determine answers to my guiding questions, first I needed to import 
 * <code>requests</code>: a library that make HTTP requests and interacts with web services
 
 
-# Question 1:?
+# Question 1:How does the number of credits students enrolled in each semester influece the likelihoon of students graduating on time??
 ***
-For the first question I looked for .... I explored data related to this question using .... created with <code>seaborn</code> and <code>matplotlib</code>.
+For the first question I looked for correlations between the graduation status of students and the enrollment patterns of students each semester.  I explored data related to this question using bar created with <code>seaborn</code> and <code>matplotlib</code>.
 
 ## Visualization for Question 1
 
 ![EDA_for_Question_1](Images/EDA_for_Question_1.png)
 
-# Question 2:  ?
+# Question 2: Does the timely payment of tuition fees have any impact on the graduation status of students??
 ***
 For the second question I looked at ... I explored this question by ...<cod>.sort_values()</code> along with visualizations created with <code>seaborn</code> and <code>matplotlib</code>
 
@@ -77,7 +77,7 @@ For the second question I looked at ... I explored this question by ...<cod>.sor
 
 ![EDA_for_Question_2](Images/EDA_for_Question_2.png)
 
-# Question 3: ?
+# Question 3: Is there are relationship between the age a students is at enrollment and the graduation status of students? ?
 ***
 For the third question I looked at looked for . I explored this question by ... using <cod>.sort_values()</code> along with visualizations created with <code>seaborn</code> and <code>matplotlib</code>
 
@@ -88,14 +88,18 @@ For the third question I looked at looked for . I explored this question by ... 
 # Conclusion
 ***
 ## Insights
-paragraph with callouts
+### Insight 1: Curricular Units in 2nd Semester Matter
+### Insight 2: Monitoring Tuition Fee Payments is Pivotal
+### Insight 3: Evaluations and Grades are Crucial
+
 
 ## Recommendations
-paragraph with callouts
+
 
 # Future Work
-*
-*
+* Explore how to apply XGBoost, a powerful gradient boosting algorithm to a ternary (3 class) classification model.s.
+* Extend the analysis to include US universities may also provide valuable insights. 
+* Identifying common factors influencing student success across diverse contexts is possible.
 
 Please review my full analysis in [my Jupyter notebook](https://github.com/dataeducator/student_academic_success/blob/main/student_academic_success.ipynb) or [my presentation](link to pdf of presentation).
 You may reach out to __Tenicka Norwood__ at tenicka.norwood@gmail.com if you have additional questions.
