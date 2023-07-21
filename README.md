@@ -187,7 +187,7 @@ Prioritizing academic support and intervention based on early evaluations and gr
 * Extending the analysis to include US universities may also provide valuable insights. 
 * Identifying common factors influencing student success across diverse contexts is possible.
 
-Please review my full analysis in [my Jupyter notebook](https://github.com/dataeducator/student_academic_success/blob/main/student_academic_success.ipynb) or [my presentation]([link to pdf of presentation](https://github.com/dataeducator/student_academic_success/blob/main/presentation.pdf)).
+Please review my full analysis in [my Jupyter notebook](https://github.com/dataeducator/student_academic_success/blob/main/student_academic_success.ipynb) or ([my presentation](https://github.com/dataeducator/student_academic_success/blob/main/presentation.pdf)).
 You may reach out to __Tenicka Norwood__ at tenicka.norwood@gmail.com if you have additional questions.
 
 # Repository Structure
