@@ -150,7 +150,7 @@ You may reach out to __Tenicka Norwood__ at tenicka.norwood@gmail.com if you hav
       ├── student_academic_success.ipynb                       Documentation of Full Analysis in Jupyter Notebook
       ├── presentation.pdf                                         PDF version of Full Analysis shown in a slide deck
       ├── notebook.pdf                                             PDF version of Full Analysis shown in Jupyter notebook
-      ├── Data/                                                Externally sourced data  
-      ├── Images/                                              Includes images generated from Python code and sourced externally
+      ├── data/                                                Externally sourced data  
+      ├── images/                                              Includes images generated from Python code and sourced externally
       └── .gitignore                                           Specifies intentionally untracked files
  </pre>
