@@ -96,6 +96,27 @@ For the third question I looked at looked for correlations between the age a stu
 
 ![EDA_for_Question_3](Images/EDA_for_Question_3.png)
 ## Model
+The TernaryClassifier is a class designed to perform classification tasks on datasets with a ternary (three-class) target variable. It provides methods for data preprocessing, training multiple classification models, making predictions, and tuning hyperparameters to optimize model performance.
+
+The name "TernaryClassifier" is derived from the term "ternary," which refers to systems or situations that involve three elements or options. In the context of classification, a ternary classification problem involves predicting one of three possible classes or categories for each data instance.
+
+Overview of the TernaryClassifier class:
+
+* Constructor: The class constructor takes a pandas DataFrame (data) as input and initializes the object. The input DataFrame should contain the features (X) and the ternary target variable (y) that the classifier will predict.
+
+* Preprocessing: The <code>preprocess_data()</code> method separates the features (X) and the target variable (y) from the input DataFrame. It then scales the feature data using StandardScaler and encodes the target variable using LabelEncoder. The scaled feature data is converted back to a DataFrame with appropriate column names and returned.
+
+* Model Library: The class defines a library of classification models that can be used for training. The library includes models like <code> {Logistic Regression, K-Nearest Neighbors, Support Vector Machine, Decision Trees, and Random Forests}</code>.
+
+* Training: The <code>train_model()</code> method trains each model in the library on the preprocessed data (X and y). It fits the models to the training data, making them ready for prediction.
+
+* Prediction: The <code>predict()</code>method takes testing feature data (X_test) and predicts the target variable values using all the trained models. The method returns a dictionary containing the predictions of each model.
+
+* Hyperparameter Tuning: The class includes a <code>tune_parameters()</code> method, which can be used to tune hyperparameters for a specific classifier using GridSearchCV. This method helps optimize model performance by finding the best hyperparameters for each model.
+
+* Training with Parameter Tuning: The <code>train_model_with_parameter_tuning()</code> method trains the classification models with their hyperparameters tuned using GridSearchCV. This method iterates through each model, performs hyperparameter tuning, and returns a dictionary of the best models with their tuned hyperparameters. Additionally, it identifies the most performative model based on the recall score.
+
+Each of the models were trained using an 80/20 split and then evaluated using recall:
 
 ## iNterpret
 ***
