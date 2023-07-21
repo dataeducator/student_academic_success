@@ -135,6 +135,8 @@ Each of the models was trained using an 80/20 split and then evaluated using rec
 I created a <code>ModelEvaluation </code> class to evaluate different classifier models for a ternary classification problem. The class contains methods to calculate evaluation metrics such as accuracy, precision, recall, and F1 score for each trained model. It also includes functions to analyze feature importances for the RandomForestClassifier and identify the best hyperparameters that yield the best recall score for each model using cross-validation.
 
 The evaluate_models method takes a trained TernaryClassifier instance, performs predictions on the test data, and calculates various evaluation metrics for each model. The analyze_feature_importances function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
+
+
 <img width="238" alt="ModelEvaluation" src="https://github.com/dataeducator/student_academic_success/assets/107881738/64d9ed1c-29ca-4980-96b2-d95282ebe9e3">
 
 ### iNterpret
