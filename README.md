@@ -142,26 +142,26 @@ The evaluate_models method takes a trained TernaryClassifier instance, performs 
 While the random forest is the most performative model with a recall score of __0.76__, we also need a way to retrieve and display the top coefficients or feature importances for each of the models if they are available. With this in mind, we calculated the absolute values of the coefficients for logistic regression and sorted them in descending order to show the most influential features in predicting the target variable. If the Logistic Regression model does not have coefficients, it notifies the user that they are unavailable. Afterward, we identify the top 5 feature importances for models such as Random Forest, Support Vector Machines, Decision Trees, and K-Nearest Neighbors. Our code displays the most important features and their corresponding importance for each model. In case a model does not have feature importances, the code alerts the user accordingly.
 
 Top 5 Coefficients for Logistic Regression:
-Curricular units 2nd sem (approved): 1.4406130311414413
-Curricular units 2nd sem (enrolled): 0.9379467613448992
-Curricular units 1st sem (approved): 0.9284216462299857
-Tuition fees up to date: 0.5393465430753019
-Curricular units 2nd sem (grade): 0.479125037413678
+- Curricular units 2nd sem (approved): 1.4406130311414413
+- Curricular units 2nd sem (enrolled): 0.9379467613448992
+- Curricular units 1st sem (approved): 0.9284216462299857
+- Tuition fees up to date: 0.5393465430753019
+- Curricular units 2nd sem (grade): 0.479125037413678
 
 Top 5 Feature Importances for Random Forest:
-Curricular units 2nd sem (approved): 0.14406489952064935
-Curricular units 2nd sem (grade): 0.10700750571270168
-Curricular units 1st sem (approved): 0.08976883790921418
-Curricular units 1st sem (grade): 0.0708387823689776
-Admission grade: 0.042196997614266894
+- Curricular units 2nd sem (approved): 0.14406489952064935
+- Curricular units 2nd sem (grade): 0.10700750571270168
+- Curricular units 1st sem (approved): 0.08976883790921418
+- Curricular units 1st sem (grade): 0.0708387823689776
+- Admission grade: 0.042196997614266894
 
 Support Vector Machine model does not have feature importances.
-Top 5 Feature Importances for Decision Trees:
-Curricular units 2nd sem (approved): 0.7340676173420965
-Tuition fees up to date: 0.08683122950372858
-Curricular units 2nd sem (enrolled): 0.06661136590598447
-Curricular units 1st sem (evaluations): 0.021620120640126576
-Age at enrollment: 0.015020568606347337
+- Top 5 Feature Importances for Decision Trees:
+- Curricular units 2nd sem (approved): 0.7340676173420965
+- Tuition fees up to date: 0.08683122950372858
+- Curricular units 2nd sem (enrolled): 0.06661136590598447
+- Curricular units 1st sem (evaluations): 0.021620120640126576
+- Age at enrollment: 0.015020568606347337
 ***
 ## Conclusion
 The feature importances from the Random Forest model and the coefficients from the Logistic Regression model both highlight the significant role of curricular units in the 2nd semester in predicting academic failure. Students who have more approved units in the 2nd semester demonstrate a higher likelihood of academic success. To effectively reduce the rate of academic failure, the student success team from the Instituto Politécnico de Portalegre should focus on supporting and guiding students to pass more units in the 2nd semester.
