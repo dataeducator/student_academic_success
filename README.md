@@ -4,10 +4,17 @@
 
 # Business Understanding:
 * __Stakeholder__: Instituto Politecnico de Portalegre
-* __Business Case__: I have been tasked by the Instituto Politecnico de Portalegre to accurately classify students' academic success. Researchers at the Instituto Politecnico de Portalegre want to reduce the rate of student academic failure in higher education. 
+* __Business Case__: I am a new data scientist and have joined the challenge the Instituto Politecnico de Portalegre created to classify students' academic success. Researchers at the Instituto Politecnico de Portalegre want to reduce the rate of student academic failure in higher education.
 
 # Overview
-In this case, the goal is to craft a reliable model that can be refined over time as more information becomes available by using machine learning techniques to identify which students are at risk at earlier stages of their academic path in order to put strategies to support students in place to mitigate their likelihood of dropping out of higher education. While the model will be created with data from higher education students in Portugal, the lag in academic success within higher education is also a challenge within the United States. Colleges and Universities face the ever-pressing challenge of identifying students who are at risk of not graduating on time and providing effective interventions to move those students back onto a positive pathway to graduation. 
+In this case, the goal is to craft and refine a reliable model by using machine learning techniques to identify which students are at risk at earlier stages of their academic path to put strategies to support students in place to mitigate their likelihood of dropping out of higher education. While the model was trained and tested with data from higher education students in Portugal, the lag in academic success within higher education is also a challenge within the United States. Colleges and Universities face the ever-pressing challenge of identifying students who are at risk of not graduating on time and providing effective interventions to move those students back onto a positive pathway to graduation.
+> The completion rates of (US) undergraduates within six years of enrollment stand at only __62.3%__ as of 2022.
+>
+> -- Hanneh Bareham and Chelsea Wing (bankrate.com)
+>
+> 
+
+Carnevale et al. (2021) Georgetown University in their study highlighted the substantial disparity in lifetime earnings based on educational attainment. In particular, the gist of this study showed that an average person with only a high school diploma or GED would earn an estimated __1.6 million dollars in their lifetime__, compared to a person with a bachelor's degree who potentially can make __~2.8 million dollars__. This profound disparity in earning potential underscores the transformative power of higher education and highlights the significance of timely graduation in enhancing students' long-term financial security.
 
 # Data Understanding and Analysis
 ***
@@ -58,20 +65,22 @@ In order to determine answers to my guiding questions, first I needed to import 
 * <code>statsmodels</code>: a library used to understand statistical relationships between variables, often used in the field of economics.
 * <code>sklearn</code>: a machine learning library for data processing and modeling.
 
+## Modeling
 
-## Obtain
+### Obtain
 The <code> ObtainData </code>class defines a constructor to initialize the data_path attribute and set data to None. It provides a method <code>load_data</code> to load the dataset from the specified data_path using pandas, assuming the dataset is in .csv format with semicolons as the separator, and assigns the loaded data to the data attribute. 
 The <code>obtain_data</code> method calls the <code>load_data</code> method and returns the loaded dataset.
 
-## Scrub
+### Scrub
 The <code>ScrubData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides a method check_placeholders to identify the presence of placeholders *(e.g., '?', '#', 'NaN', 'null', 'N/A', '-')* throughout the entire DataFrame. If any placeholders are found, they are replaced; otherwise, a message indicating that no placeholders were detected is printed.
 
-Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function and the resulting cleaned DataFrame is returned.
+Additionally, the class includes a <code>clean</code> method to perform data cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function, and the resulting cleaned DataFrame is returned.
 
-## Explore
-The <code>ExploreData </code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides methods for examining the structure of the dataset, checking and dropping duplicates, generating and displaying a correlation matrix heatmap, plotting a pair plot, and filtering a correlation table based on specified thresholds. Additionally, the class includes methods for plotting the gender distribution, dropout distribution by gender, and the target variable distribution for college students in the dataset. These visualizations aid in exploring and understanding the dataset's characteristics and relationships between variables.
+### Explore
+The <code>ExploreData </code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides methods for examining the structure of the dataset, checking and dropping duplicates, generating and displaying a correlation matrix heatmap, plotting a pairplot, and filtering a correlation table based on specified thresholds. Additionally, the class includes methods for plotting the gender distribution, dropout distribution by gender, and the target variable distribution for college students in the dataset. These visualizations aid in exploring and understanding the dataset's characteristics and relationships between variables.
 
 The <code>AnalyzeData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides the <code>analyzedata</code> method to perform data analysis and generate various bar charts and boxplots to examine the influence of different features on graduation status. The class includes methods to map and revise variable values, filter relevant columns, and plot bar charts and boxplots using Seaborn and Matplotlib. The visualizations aim to gain insights into how various factors such as age range, curricular units, tuition fees, scholarship status, and previous qualification impact graduation status. The different visualizations facilitate the exploration of potential patterns and relationships in the data to support decision-making and interventions for improving graduation rates at Instituto Politecnico de Portalegre.
+
 ###  Question 1:How does the number of credits students enrolled in each semester influence the likelihood of students graduating on time??
 ***
 For the first question, I looked for correlations between the graduation status of students and the enrollment patterns of students each semester.  
@@ -95,9 +104,11 @@ For the second question, I looked at tuition fee payments for each of the three 
 For the third question I looked at looked for correlations between the age a student was at enrollment and their graduation status along with visualizations created with <code>seaborn</code> and <code>matplotlib</code>
 
 ### Visualization for Question 3
-<img width="484" alt="EDA for Question 3" src="https://github.com/dataeducator/student_academic_success/assets/107881738/519eabb3-2348-4e65-8010-6982ee06bb83">
 
-## Model
+![EDA_for_Question_3](Images/EDA_for_Question_3.png)
+
+
+### Model
 The TernaryClassifier is a class designed to perform classification tasks on datasets with a ternary (three-class) target variable. It provides methods for data preprocessing, training multiple classification models, making predictions, and tuning hyperparameters to optimize model performance.
 
 The name "TernaryClassifier" is derived from the term "ternary," which refers to systems or situations that involve three elements or options. In the context of classification, a ternary classification problem involves predicting one of three possible classes or categories for each data instance.
@@ -120,8 +131,12 @@ Overview of the TernaryClassifier class:
 
 Each of the models was trained using an 80/20 split and then evaluated using recall:
 
-## iNterpret
+### Evaluation
+
+### iNterpret
 ***
+## Conclusion
+
 ## Insights
 ### Insight 1: Curricular Units in 2nd Semester Matter
 Focusing on students' progress and success in their 2nd-semester curricular units can significantly contribute to reducing the rate of academic failure.
@@ -150,7 +165,7 @@ You may reach out to __Tenicka Norwood__ at tenicka.norwood@gmail.com if you hav
       ├── student_academic_success.ipynb                       Documentation of Full Analysis in Jupyter Notebook
       ├── presentation.pdf                                         PDF version of Full Analysis shown in a slide deck
       ├── notebook.pdf                                             PDF version of Full Analysis shown in Jupyter notebook
-      ├── data/                                                Externally sourced data  
-      ├── images/                                              Includes images generated from Python code and sourced externally
+      ├── Data/                                                Externally sourced data  
+      ├── Images/                                              Includes images generated from Python code and sourced externally
       └── .gitignore                                           Specifies intentionally untracked files
  </pre>
