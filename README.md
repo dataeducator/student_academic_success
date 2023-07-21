@@ -105,8 +105,7 @@ For the third question, I looked at looked for correlations between the age a st
 
 ### Visualization for Question 3
 
-![EDA_for_Question_3](Images/EDA_for_Question_3.png)
-
+<img width="484" alt="EDA for Question 3" src="https://github.com/dataeducator/student_academic_success/assets/107881738/26970cc4-0009-4d72-a808-7d78411f7a34">
 
 ### Model
 The TernaryClassifier is a class designed to perform classification tasks on datasets with a ternary (three-class) target variable. It provides methods for data preprocessing, training multiple classification models, making predictions, and tuning hyperparameters to optimize model performance.
