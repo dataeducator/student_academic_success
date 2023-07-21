@@ -74,14 +74,14 @@ The <code>obtain_data</code> method calls the <code>load_data</code> method and 
 ### Scrub
 The <code>ScrubData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides a method check_placeholders to identify the presence of placeholders *(e.g., '?', '#', 'NaN', 'null', 'N/A', '-')* throughout the entire DataFrame. If any placeholders are found, they are replaced; otherwise, a message indicating that no placeholders were detected is printed.
 
-Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function and the resulting cleaned DataFrame is returned.
+Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function, and the resulting cleaned DataFrame is returned.
 
 ### Explore
 The <code>ExploreData </code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides methods for examining the structure of the dataset, checking and dropping duplicates, generating and displaying a correlation matrix heatmap, plotting a pair plot, and filtering a correlation table based on specified thresholds. Additionally, the class includes methods for plotting the gender distribution, dropout distribution by gender, and the target variable distribution for college students in the dataset. These visualizations aid in exploring and understanding the dataset's characteristics and relationships between variables.
 
 The <code>AnalyzeData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides the <code>analyzedata</code> method to perform data analysis and generate various bar charts and boxplots to examine the influence of different features on graduation status. The class includes methods to map and revise variable values, filter relevant columns, and plot bar charts and boxplots using Seaborn and Matplotlib. The visualizations aim to gain insights into how various factors such as age range, curricular units, tuition fees, scholarship status, and previous qualification impact graduation status. The different visualizations facilitate the exploration of potential patterns and relationships in the data to support decision-making and interventions for improving graduation rates at Instituto Politecnico de Portalegre.
 
-###  Question 1:How does the number of credits students enrolled in each semester influence the likelihood of students graduating on time??
+###  Question 1:How does the number of credits students enrolled in each semester influence the likelihood of students graduating on time?
 ***
 For the first question, I looked for correlations between the graduation status of students and the enrollment patterns of students each semester.  
 
@@ -91,7 +91,7 @@ For the first question, I looked for correlations between the graduation status 
 
 <img width="508" alt="EDA for Question 1b" src="https://github.com/dataeducator/student_academic_success/assets/107881738/0453827a-316d-4b22-a5b9-48cf596d1435">
 
-### Question 2: Does the timely payment of tuition fees have any impact on the graduation status of students??
+### Question 2: Does the timely payment of tuition fees have any impact on the graduation status of students?
 ***
 For the second question, I looked at tuition fee payments for each of the three classes.
 
@@ -187,7 +187,7 @@ Prioritizing academic support and intervention based on early evaluations and gr
 * Extending the analysis to include US universities may also provide valuable insights. 
 * Identifying common factors influencing student success across diverse contexts is possible.
 
-Please review my full analysis in [my Jupyter notebook](https://github.com/dataeducator/student_academic_success/blob/main/student_academic_success.ipynb) or [my presentation](link to pdf of presentation).
+Please review my full analysis in [my Jupyter notebook](https://github.com/dataeducator/student_academic_success/blob/main/student_academic_success.ipynb) or [my presentation]([link to pdf of presentation](https://github.com/dataeducator/student_academic_success/blob/main/presentation.pdf)).
 You may reach out to __Tenicka Norwood__ at tenicka.norwood@gmail.com if you have additional questions.
 
 # Repository Structure
