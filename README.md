@@ -136,6 +136,8 @@ I created a <code>ModelEvaluation </code> class to evaluate different classifier
 The evaluate_models method takes a trained TernaryClassifier instance, performs predictions on the test data, and calculates various evaluation metrics for each model. The analyze_feature_importances function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
 
 <img width="656" alt="ModelEvaluation" src="https://github.com/dataeducator/student_academic_success/assets/107881738/de02951d-7543-4f86-bfe8-cf2c2a5e5915">
+![Evaluate Decision Trees](https://github.com/dataeducator/student_academic_success/assets/107881738/d78d8a4f-6c83-48b8-b13a-1152f672058d)
+![Confusion Matrix Random Forest](https://github.com/dataeducator/student_academic_success/assets/107881738/5a80cba2-a254-49db-95b5-2e4c57b63d5e)
 
 
 ### iNterpret
