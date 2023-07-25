@@ -31,13 +31,20 @@ In this project, I will use the OSEMiN pipeline to:
 * Model → Create a set of predictive models.
 * iNterpret → Identify insights and create visualizations of findings.
 
+We will prioritize recall in this project over precision. By prioritizing recall, we aim to reduce the number of false negatives and increase the model's ability to correctly identify and intervene with students at risk of academic failure. Minimizing the number of false negatives will help to ensure that fewer students who need educational assistance slip through the cracks and are not appropriately identified and supported.
+
+* True positives are the cases when a model predicts positive instances correctly.
+    - Ex. students predicted to drop out and do drop out
+* False negatives are the cases when a model mispredicts negative instances.
+    - Ex. students predicted to drop out but do not drop out
+
 ## Source of Data
-The University of California (Irvine) hosts a machine learning repository with datasets that can be evaluated using machine learning techniques. The dataset used in this exploration can be found [here](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success). This dataset was created as a part of a project to reduce academic dropout and failure rates in higher education by leveraging machine learning to identify at-risk students early in their academic careers and support them to improve their likelihood of on-time graduation.  
+The machine learning repository at the University of California(Irvine) contains dataset for evaluating machine learning techniques. The dataset used in this exploration is from this repository and can be found [here](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success). This dataset was created as a part of a project to reduce academic dropout and failure rates in higher education. Using machine learning, this project aims to identify at-risk students early  and provide support to improve their likelihood of on-time graduation.  
 
 
 ## Description of Data
 ***
-The data can be found in the data folder of this repository includes information that is known from the time a student enrolls until their second semester of enrollment, including their:
+The data can also be found in the data folder of this repository includes information that is known from the time a student enrolls until their second semester of enrollment, including their:
 - academic path
 - demographics
 - social-economic factors
@@ -56,11 +63,12 @@ There are three classifications of students within this dataset:
 - enrolled
 - graduate
 
-The data was preprocessed to address missing values and anomalies. I am going to use a minimum of 4 machine-learning algorithms to classify this data and will also use exploration to determine the following guiding questions:
+We preprocessed the data to address missing values and anomalies. The dataset has 37 columns with 4424 rows of data. I am going to use a minimum of 4 machine-learning algorithms to classify this data and will also use exploration to determine the following:
 
-- How does marital status influence the likelihood of students graduating on time?
+- How does the number of credits students enrolled in each semester influence the likelihood of students graduating on time?
 - Does the timely payment of tuition fees have any impact on the graduation status of students?
-- Is there a relationship between the parents' qualifications and the graduation status of students?
+- Is there a relationship between the age a student is at enrollment and the graduation status of students?
+
 To determine answers to my guiding questions, first, I needed to import relevant libraries and packages.
 
 * <code>pandas</code>: a data analysis and manipulation library which allows for flexible reading, writing, and reshaping of data
@@ -77,22 +85,12 @@ The <code> ObtainData </code>class defines a constructor to initialize the data_
 The <code>obtain_data</code> method calls the <code>load_data</code> method and returns the loaded dataset.
 
 ### Scrub
-The <code>ScrubData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides a method check_placeholders to identify the presence of placeholders *(e.g., '?', '#', 'NaN', 'null', 'N/A', '-')* throughout the entire DataFrame. If any placeholders are found, they are replaced; otherwise, a message indicating that no placeholders were detected is printed.
+The <code>ScrubData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides a method check_placeholders to check for placeholders  *(e.g., '?', '#', 'NaN', 'null', 'N/A', '-')* and replaces them if found;  otherwise, it prints a message indicating that no placeholders were detected.
 
 Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function and the resulting cleaned DataFrame is returned.
 
 ### Explore
-During exploration, the following trends were identified:
-
-* Age Range and Graduation: 25-35 age group has higher enrollment and graduation rates. Age 50+ has higher dropout.
-* Curricular Units and Graduation: 4-6 units show the highest graduation rate, 7+ slightly lower, and 0-3 lower.
-* Tuition Fees and Graduation: Up-to-date fees link to significantly higher graduation rates.
-* Marital Status and Graduation: Married/in a union have a higher graduation rate.
-* Previous Qualification: Higher education levels have higher graduation rates. Basic education lower rates.
-
-I will combine this information with the results of a ternary classifier that is trained on 80% of the dataset to identify insights that will make an impact on decreasing failure rates for students in higher education.
-
-The <code>ExploreData </code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides methods for examining the dataset's structure, checking and dropping duplicates, generating and displaying a correlation matrix heatmap, plotting a pair plot, and filtering a correlation table based on specified thresholds. Additionally, the class includes methods for plotting the gender distribution, dropout distribution by gender, and the target variable distribution for college students in the dataset. These visualizations aid in exploring and understanding the dataset's characteristics and relationships between variables.
+After obtaining the dataset using the <code>ObtainData</code> class and cleaning it with the <code>ScrubData</code> class, the <coode>ExploreData</code> class can be used to analyze and explore the cleaned dataset further. The <code>ExploreData</code> class allows us to understand the data and identify any patterns or insights that could be beneficial for the subsequent analysis or decision-making processes.
 
 The AnalyzeData class has the following functions:
 
@@ -102,6 +100,16 @@ The AnalyzeData class has the following functions:
 * <code>plot_horizontal_bar_chart</code>: Plots horizontal bar charts to explore the influence of 'Previous qualification' on graduation status.
 
 By using these functions, we can begin to explore the factors affecting graduation outcomes.
+
+During exploration, we identified the following trends:
+
+* Age Range and Graduation: 25-35 age group has higher enrollment and graduation rates. Age 50+ has higher dropout.
+* Curricular Units and Graduation: 4-6 units show the highest graduation rate, 7+ slightly lower, and 0-3 lower.
+* Tuition Fees and Graduation: Up-to-date fees link to significantly higher graduation rates.
+* Marital Status and Graduation: Married/in a union have a higher graduation rate.
+* Previous Qualification: Higher education levels have higher graduation rates. Basic education lower rates.
+
+I will combine this information with the results of a ternary classifier that is trained on 80% of the dataset to identify insights that will make an impact on decreasing failure rates for students in higher education.
 
 ###  Question 1:How does the number of credits students enrolled in each semester influence the likelihood of students graduating on time?
 ***
@@ -134,19 +142,35 @@ The <code>TernaryClassifier</code> is a class designed to perform classification
 
 The name "TernaryClassifier" is derived from the term "ternary," which refers to systems or situations that involve three elements or options. A ternary classification problem involves predicting one of three possible classes or categories for each data instance.
 
-Each of the models was trained using an 80/20 split and then evaluated using recall:
+The <code>TernaryClassifier</code> class includes:
+
+* Constructor: Takes a DataFrame (<code>data</code>) containing features (X) and ternary target variable (y).
+
+* Preprocessing: Separates X and y, scales features using <code>StandardScaler</code>, encodes y with <code>LabelEncoder</code>, and returns the scaled features as a DataFrame.
+
+* Model Library: Defines models for training, including <code>Logistic Regression</code>, <code>K-Nearest Neighbors</code>, <code>Support Vector Machine</code>, <code>Decision Trees</code>, and <code>Random Forests</code>.
+
+* Training: Trains each model in the library on preprocessed data (X and y), making them ready for prediction.
+
+* Prediction: Predicts target variable values using all trained models on testing data (X_test), returning a dictionary of model predictions.
+
+* Hyperparameter Tuning: Uses <code>tune_parameters()</code> method to optimize model performance by finding the best hyperparameters for each classifier using <code>GridSearchCV</code>.
+
+* Training with Parameter Tuning: Trains models with tuned hyperparameters using <code>GridSearchCV</code>. Returns a dictionary of best models and identifies the most performative one based on recall scores.
+
+Each of the models was trained using an 80/20 split and then evaluated using recall.
 
 ### Evaluation
-I created a <code>ModelEvaluation </code> class to evaluate different classifier models for a ternary classification problem. The class contains: 
+I created a <code>ModelEvaluation</code> class to evaluate different classifier models for a ternary classification problem. The class contains: 
 
 * methods to calculate evaluation metrics such as accuracy, precision, recall, and F1 score for each trained model. 
 
 *  functions to analyze feature importances for the <code>RandomForestClassifier</code> and identify the best hyperparameters that yield the best recall score for each model using cross-validation.
 
 The class includes the following functions: 
-*  <code>evaluate_models</code> &rarr; takes a trained <code>TernaryClassifier</code> instance, performs predictions on the test data, and calculates various evaluation metrics for each model. 
+* <code>evaluate_models</code> &rarr; takes a trained <code>TernaryClassifier</code> instance, performs predictions on the test data, and calculates various evaluation metrics for each model. 
 
-* <code>analyze_feature_importances</code> &rarr; analyze feature importances for the <code>RandomForestClassifier</code> and stores them in a dataframe. 
+* <code>analyze_feature_importances</code> &rarr; analyze feature importances for the <code>RandomForestClassifier</code> and stores them in a data frame. 
     
 * <code>calculate_best_scores</code> &rarr; <code>GridSearchCV</code> to find the best hyperparameters for each model based on a specified scoring metric. 
     
@@ -167,7 +191,7 @@ The <code>evaluate_models</code> method takes a trained <code>TernaryClassifier<
 The <code>analyze_feature_importances</code> function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
 
 ### iNterpret
-Our code displays a confusion matrix, the most important features, and their corresponding importances for each model. If a model does not have feature importances, the code alerts the user accordingly.
+Our code displays a confusion matrix, the most pertinent features, and their corresponding feature importances for each model. If a model does not have feature importances, the code alerts the user accordingly.
 
 * The top 5 feature importances are identified and displayed for various models (Random Forest, SVM, Decision Trees, K Nearest neighbors), with a notification for models without feature importances.
 * The random forest is the most performative model with a recall score of __0.76__
