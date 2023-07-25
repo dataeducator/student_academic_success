@@ -14,7 +14,12 @@ In this case, the goal is to craft and refine a reliable model by using machine 
 >
 > 
 
-Carnevale et al. (2021) Georgetown University in their study highlighted the substantial disparity in lifetime earnings based on educational attainment. In particular, the gist of this study showed that an average person with only a high school diploma or GED would earn an estimated __1.6 million dollars in their lifetime__, compared to a person with a bachelor's degree who potentially can make __~2.8 million dollars__. This profound disparity in earning potential underscores the transformative power of higher education and highlights the significance of timely graduation in enhancing students' long-term financial security.
+We will prioritize recall in this project over precision. By prioritizing recall, we aim to reduce the number of false negatives and increase the model's ability to correctly identify and intervene with students at risk of academic failure. Minimizing the number of false negatives will help to ensure that fewer students who need educational assistance slip through the cracks and are not appropriately identified and supported.
+
+* True Positive represents the number correctly predicted positive instances.
+    * Ex. students bieng predicted to dropout and actually do dropout
+* False negatives represent the number of incorrectly predicted negative instances.
+    * Ex. students being predicted to dropout but do not dropout
 
 # Data Understanding and Analysis
 ***
@@ -77,9 +82,26 @@ The <code>ScrubData</code> class defines a constructor to initialize the data at
 Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function and the resulting cleaned DataFrame is returned.
 
 ### Explore
+During exploration, the following trends were identified:
+
+* Age Range and Graduation: 25-35 age group has higher enrollment and graduation rates. Age 50+ has higher dropout.
+* Curricular Units and Graduation: 4-6 units show highest graduation rate, 7+ slightly lower, 0-3 lower.
+* Tuition Fees and Graduation: Up-to-date fees link to significantly higher graduation rates.
+* Marital Status and Graduation: Married/in a union have higher graduation rate.
+* Previous Qualification: Higher education levels have higher graduation rates. Basic education lower rates.
+
+I will combine this information with the results of a ternary classifier that is trained on 80% of the dataset to idenify insights that will make an impact on decreasing failure rates for students in higher education.
+
 The <code>ExploreData </code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides methods for examining the structure of the dataset, checking and dropping duplicates, generating and displaying a correlation matrix heatmap, plotting a pair plot, and filtering a correlation table based on specified thresholds. Additionally, the class includes methods for plotting the gender distribution, dropout distribution by gender, and the target variable distribution for college students in the dataset. These visualizations aid in exploring and understanding the dataset's characteristics and relationships between variables.
 
-The <code>AnalyzeData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides the <code>analyzedata</code> method to perform data analysis and generate various bar charts and boxplots to examine the influence of different features on graduation status. The class includes methods to map and revise variable values, filter relevant columns, and plot bar charts and boxplots using Seaborn and Matplotlib. The visualizations aim to understand how age range, curricular units, tuition fees, scholarship status, and previous qualification impact graduation status. The different visualizations facilitate the exploration of potential patterns and relationships in the data to support decision-making and interventions for improving graduation rates at Instituto Politecnico de Portalegre.
+The AnalyzeData class has the following functions:
+
+* <code>analyze</code>: Maps relevant variables to their corresponding labels and performs data analysis to explore factors influencing student graduation status.
+* <code>plot_bar_chart</code>: Plots bar charts to visualize the impact of categorical variables on graduation status.
+* <code>plot_boxplot</code>: Plots box plots to visualize the relationship between target variables and numerical features.
+* <code>plot_horizontal_bar_chart</code>: Plots horizontal bar charts to explore the influence of 'Previous qualification' on graduation status.
+
+By using these functions, we can begin to explore the factors affecting graduation outcomes.
 
 ###  Question 1:How does the number of credits students enrolled in each semester influence the likelihood of students graduating on time?
 ***
@@ -131,7 +153,22 @@ Overview of the TernaryClassifier class:
 Each of the models was trained using an 80/20 split and then evaluated using recall:
 
 ### Evaluation
-I created a <code>ModelEvaluation </code> class to evaluate different classifier models for a ternary classification problem. The class contains methods to calculate evaluation metrics such as accuracy, precision, recall, and F1 score for each trained model. It also includes functions to analyze feature importances for the RandomForestClassifier and identify the best hyperparameters that yield the best recall score for each model using cross-validation.
+I created a <code>ModelEvaluation </code> class to evaluate different classifier models for a ternary classification problem. The class contains: 
+
+* methods to calculate evaluation metrics such as accuracy, precision, recall, and F1 score for each trained model. 
+
+*  functions to analyze feature importances for the <code>RandomForestClassifier</code> and identify the best hyperparameters that yield the best recall score for each model using cross-validation.
+
+The class includes the following functions: 
+*  <code>evaluate_models</code> &rarr; takes a trained <code>TernaryClassifier</code> instance, performs predictions on the test data, and calculates various evaluation metrics for each model. 
+
+* <code>analyze_feature_importances</code> &rarr; analyzes feature importances for the <code>RandomForestClassifier</code> and stores them in a dataframe. 
+    
+* <code>calculate_best_scores</code> &rarr; <code>GridSearchCV</code> to find the best hyperparameters for each model based on a specified scoring metric. 
+    
+* <code>identify_best_parameters</code> &rarr; identifies the best hyperparameters and their corresponding recall scores for each model.
+
+* <code>plot_feature_importances</code> &rarr; plots the feature importances of the trained models using bar plots.
 
 <img width="656" alt="ModelEvaluation" src="https://github.com/dataeducator/student_academic_success/assets/107881738/de02951d-7543-4f86-bfe8-cf2c2a5e5915">
 
@@ -146,7 +183,16 @@ The <code>evaluate_models</code> method takes a trained <code>TernaryClassifier<
 The <code>analyze_feature_importances</code> function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
 
 ### iNterpret
-While the random forest is the most performative model with a recall score of __0.76__, we also need a way to retrieve and display the top coefficients or feature importances for each model if they are available. With this in mind, we calculated the absolute values of the coefficients for logistic regression and sorted them in descending order to show the most influential features in predicting the target variable. If the Logistic Regression model does not have coefficients, it notifies the user that they are unavailable. Afterward, we identify the top 5 feature importances for models such as Random Forest, Support Vector Machines, Decision Trees, and K-Nearest Neighbors. Our code displays the most important features and their corresponding importance for each model. If a model does not have feature importances, the code alerts the user accordingly.
+Our code displays a confusion matrix, the most important features and their corresponding importances for each model. In case a model does not have feature importances, the code alerts the user accordingly.
+
+* The top 5 feature importances are identified and displayed for various models (Random Forest, SVM, Decision Trees, K Nearest neightbors), with a notidication for models without feature importances.
+* The random forrest is the most performative model with a recall score of __0.76__
+* The confusion matrix for random forest suggests that our predicts student dropouts and graduates much better than it predicts students who are enrolled: 
+  - Dropout as Dropout prediction: correct 76 out of 100 times
+  - Graduate as Graduate prediction: correct 93 out of 100 times
+  - Enrolled as Enrolled prediction: correct 30 out of 100 times
+  - Enrolled as Dropout prediction: correct 26 out of 100 times
+  - Graduated as Dropout prediction: correct 3 out of 100 times
 
 Top 5 Coefficients for Logistic Regression:
 - Curricular units 2nd sem (approved): 1.4406130311414413
@@ -179,6 +225,12 @@ Both models underscore the significance of performance-related features, includi
 
 In light of these insights, I recommend the student success team from the Instituto Politécnico de Portalegre adopt a multifaceted approach. By combining academic support, monitoring tuition fee payments, and providing early interventions based on performance, the team can effectively promote student success and improve overall student outcomes. Leveraging data-driven insights, the student success team can tailor their efforts and allocate resources strategically to support students better and foster a culture of academic achievement.
 ## Insights
+Based on the information from the confusion matrices and feature analysis, we recommend:
+
+* Adopting a multifaceted strategy that includes academic support and interventions.
+* Monitoring tuition fee payments to mitigate academic failure.
+* Providing early interventions between 1st and 2nd semester.
+
 ### Insight 1: Curricular Units in 2nd Semester Matter
 Focusing on students' progress and success in their 2nd-semester curricular units can significantly contribute to reducing the rate of academic failure.
 
