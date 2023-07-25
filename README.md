@@ -27,7 +27,7 @@ In this project, I will use the OSEMiN pipeline to:
 * iNterpret → Identify insights and create visualizations of findings.
 
 ## Source of Data
-The University of California (Irvine) hosts a machine learning repository with datasets that can be evaluated using machine learning techniques. The dataset used in this exploration can be found [here](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success). This dataset was created as a part of a project to reduce academic dropout and failure rates in higher education by leveraging machine learning to identify at-risk students early in their academic careers and provide them support to improve their likelihood of on-time graduation.  
+The University of California (Irvine) hosts a machine learning repository with datasets that can be evaluated using machine learning techniques. The dataset used in this exploration can be found [here](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success). This dataset was created as a part of a project to reduce academic dropout and failure rates in higher education by leveraging machine learning to identify at-risk students early in their academic careers and support them to improve their likelihood of on-time graduation.  
 
 
 ## Description of Data
@@ -108,7 +108,7 @@ For the third question, I looked at looked for correlations between the age a st
 <img width="484" alt="EDA for Question 3" src="https://github.com/dataeducator/student_academic_success/assets/107881738/26970cc4-0009-4d72-a808-7d78411f7a34">
 
 ### Model
-The TernaryClassifier is a class designed to perform classification tasks on datasets with a ternary (three-class) target variable. It provides methods for data preprocessing, training multiple classification models, making predictions, and tuning hyperparameters to optimize model performance.
+The <code>TernaryClassifier</code> is a class designed to perform classification tasks on datasets with a ternary (three-class) target variable. It provides methods for data preprocessing, training multiple classification models, making predictions, and tuning hyperparameters to optimize model performance.
 
 The name "TernaryClassifier" is derived from the term "ternary," which refers to systems or situations that involve three elements or options. In the context of classification, a ternary classification problem involves predicting one of three possible classes or categories for each data instance.
 
@@ -135,15 +135,15 @@ I created a <code>ModelEvaluation </code> class to evaluate different classifier
 
 <img width="656" alt="ModelEvaluation" src="https://github.com/dataeducator/student_academic_success/assets/107881738/de02951d-7543-4f86-bfe8-cf2c2a5e5915">
 
-The evaluate_models method takes a trained TernaryClassifier instance, performs predictions on the test data, and calculates various evaluation metrics for each model.
+The <code>evaluate_models</code> method takes a trained <code>TernaryClassifier</code> instance, performs predictions on the test data, and calculates various evaluation metrics for each model.
 
 ![Confusion Matrix Random Forest](https://github.com/dataeducator/student_academic_success/assets/107881738/3da114f1-886a-4ef5-8fa5-eede918ef429)
 ![Evaluate Decision Trees](https://github.com/dataeducator/student_academic_success/assets/107881738/cec50f9c-dada-4239-811e-3b3f07b21033)
 
-The analyze_feature_importances function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
+The <code>analyze_feature_importances</code> function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
 
 ### iNterpret
-While the random forest is the most performative model with a recall score of __0.76__, we also need a way to retrieve and display the top coefficients or feature importances for each of the models if they are available. With this in mind, we calculated the absolute values of the coefficients for logistic regression and sorted them in descending order to show the most influential features in predicting the target variable. If the Logistic Regression model does not have coefficients, it notifies the user that they are unavailable. Afterward, we identify the top 5 feature importances for models such as Random Forest, Support Vector Machines, Decision Trees, and K-Nearest Neighbors. Our code displays the most important features and their corresponding importance for each model. In case a model does not have feature importances, the code alerts the user accordingly.
+While the random forest is the most performative model with a recall score of __0.76__, we also need a way to retrieve and display the top coefficients or feature importances for each model if they are available. With this in mind, we calculated the absolute values of the coefficients for logistic regression and sorted them in descending order to show the most influential features in predicting the target variable. If the Logistic Regression model does not have coefficients, it notifies the user that they are unavailable. Afterward, we identify the top 5 feature importances for models such as Random Forest, Support Vector Machines, Decision Trees, and K-Nearest Neighbors. Our code displays the most important features and their corresponding importance for each model. If a model does not have feature importances, the code alerts the user accordingly.
 
 Top 5 Coefficients for Logistic Regression:
 - Curricular units 2nd sem (approved): 1.4406130311414413
