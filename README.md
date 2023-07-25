@@ -134,11 +134,11 @@ Each of the models was trained using an 80/20 split and then evaluated using rec
 I created a <code>ModelEvaluation </code> class to evaluate different classifier models for a ternary classification problem. The class contains methods to calculate evaluation metrics such as accuracy, precision, recall, and F1 score for each trained model. It also includes functions to analyze feature importances for the RandomForestClassifier and identify the best hyperparameters that yield the best recall score for each model using cross-validation.
 
 <img width="656" alt="ModelEvaluation" src="https://github.com/dataeducator/student_academic_success/assets/107881738/de02951d-7543-4f86-bfe8-cf2c2a5e5915">
-![Evaluate Decision Trees](https://github.com/dataeducator/student_academic_success/assets/107881738/cec50f9c-dada-4239-811e-3b3f07b21033)
 
 The evaluate_models method takes a trained TernaryClassifier instance, performs predictions on the test data, and calculates various evaluation metrics for each model. The analyze_feature_importances function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
 
 ![Confusion Matrix Random Forest](https://github.com/dataeducator/student_academic_success/assets/107881738/3da114f1-886a-4ef5-8fa5-eede918ef429)
+![Evaluate Decision Trees](https://github.com/dataeducator/student_academic_success/assets/107881738/cec50f9c-dada-4239-811e-3b3f07b21033)
 
 
 ### iNterpret
