@@ -74,7 +74,7 @@ The <code>obtain_data</code> method calls the <code>load_data</code> method and 
 ### Scrub
 The <code>ScrubData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides a method check_placeholders to identify the presence of placeholders *(e.g., '?', '#', 'NaN', 'null', 'N/A', '-')* throughout the entire DataFrame. If any placeholders are found, they are replaced; otherwise, a message indicating that no placeholders were detected is printed.
 
-Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function, and the resulting cleaned DataFrame is returned.
+Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function and the resulting cleaned DataFrame is returned.
 
 ### Explore
 The <code>ExploreData </code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides methods for examining the structure of the dataset, checking and dropping duplicates, generating and displaying a correlation matrix heatmap, plotting a pair plot, and filtering a correlation table based on specified thresholds. Additionally, the class includes methods for plotting the gender distribution, dropout distribution by gender, and the target variable distribution for college students in the dataset. These visualizations aid in exploring and understanding the dataset's characteristics and relationships between variables.
@@ -135,11 +135,12 @@ I created a <code>ModelEvaluation </code> class to evaluate different classifier
 
 <img width="656" alt="ModelEvaluation" src="https://github.com/dataeducator/student_academic_success/assets/107881738/de02951d-7543-4f86-bfe8-cf2c2a5e5915">
 
-The evaluate_models method takes a trained TernaryClassifier instance, performs predictions on the test data, and calculates various evaluation metrics for each model. The analyze_feature_importances function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
+The evaluate_models method takes a trained TernaryClassifier instance, performs predictions on the test data, and calculates various evaluation metrics for each model.
 
 ![Confusion Matrix Random Forest](https://github.com/dataeducator/student_academic_success/assets/107881738/3da114f1-886a-4ef5-8fa5-eede918ef429)
 ![Evaluate Decision Trees](https://github.com/dataeducator/student_academic_success/assets/107881738/cec50f9c-dada-4239-811e-3b3f07b21033)
 
+The analyze_feature_importances function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
 
 ### iNterpret
 While the random forest is the most performative model with a recall score of __0.76__, we also need a way to retrieve and display the top coefficients or feature importances for each of the models if they are available. With this in mind, we calculated the absolute values of the coefficients for logistic regression and sorted them in descending order to show the most influential features in predicting the target variable. If the Logistic Regression model does not have coefficients, it notifies the user that they are unavailable. Afterward, we identify the top 5 feature importances for models such as Random Forest, Support Vector Machines, Decision Trees, and K-Nearest Neighbors. Our code displays the most important features and their corresponding importance for each model. In case a model does not have feature importances, the code alerts the user accordingly.
