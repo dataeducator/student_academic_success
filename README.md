@@ -79,7 +79,7 @@ Additionally, the class includes a <code>clean</code> method to perform data-cle
 ### Explore
 The <code>ExploreData </code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides methods for examining the structure of the dataset, checking and dropping duplicates, generating and displaying a correlation matrix heatmap, plotting a pair plot, and filtering a correlation table based on specified thresholds. Additionally, the class includes methods for plotting the gender distribution, dropout distribution by gender, and the target variable distribution for college students in the dataset. These visualizations aid in exploring and understanding the dataset's characteristics and relationships between variables.
 
-The <code>AnalyzeData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides the <code>analyzedata</code> method to perform data analysis and generate various bar charts and boxplots to examine the influence of different features on graduation status. The class includes methods to map and revise variable values, filter relevant columns, and plot bar charts and boxplots using Seaborn and Matplotlib. The visualizations aim to gain insights into how various factors such as age range, curricular units, tuition fees, scholarship status, and previous qualification impact graduation status. The different visualizations facilitate the exploration of potential patterns and relationships in the data to support decision-making and interventions for improving graduation rates at Instituto Politecnico de Portalegre.
+The <code>AnalyzeData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides the <code>analyzedata</code> method to perform data analysis and generate various bar charts and boxplots to examine the influence of different features on graduation status. The class includes methods to map and revise variable values, filter relevant columns, and plot bar charts and boxplots using Seaborn and Matplotlib. The visualizations aim to understand how age range, curricular units, tuition fees, scholarship status, and previous qualification impact graduation status. The different visualizations facilitate the exploration of potential patterns and relationships in the data to support decision-making and interventions for improving graduation rates at Instituto Politecnico de Portalegre.
 
 ###  Question 1:How does the number of credits students enrolled in each semester influence the likelihood of students graduating on time?
 ***
@@ -93,7 +93,7 @@ For the first question, I looked for correlations between the graduation status 
 
 ### Question 2: Does the timely payment of tuition fees have any impact on the graduation status of students?
 ***
-For the second question, I looked at tuition fee payments for each of the three classes.
+For the second question, I looked at tuition fee payments for each class.
 
 ### Visualization for Question 2
 <img width="476" alt="EDA for Question 2" src="https://github.com/dataeducator/student_academic_success/assets/107881738/efe9f06b-62d6-45b2-b509-8bcb9a9a7127">
@@ -139,6 +139,9 @@ The <code>evaluate_models</code> method takes a trained <code>TernaryClassifier<
 
 ![Confusion Matrix Random Forest](https://github.com/dataeducator/student_academic_success/assets/107881738/3da114f1-886a-4ef5-8fa5-eede918ef429)
 ![Evaluate Decision Trees](https://github.com/dataeducator/student_academic_success/assets/107881738/cec50f9c-dada-4239-811e-3b3f07b21033)
+![Confusion Matrix KNN](https://github.com/dataeducator/student_academic_success/assets/107881738/f944f1c3-e477-4e6f-a661-cb004c161b89)
+![Confusion Matrix Support Vector Machine](https://github.com/dataeducator/student_academic_success/assets/107881738/9a0dc08f-794a-4766-8575-b22022314993)
+
 
 The <code>analyze_feature_importances</code> function analyzes feature importances for the RandomForestClassifier and stores them in a data frame. The calculate_best_scores method uses GridSearchCV to find the best hyperparameters for each model based on a specified scoring metric. Finally, the identify_best_parameters function identifies the best hyperparameters and their corresponding recall scores for each model.
 
@@ -168,11 +171,11 @@ Support Vector Machine model does not have feature importances.
 - Age at enrollment: 0.015020568606347337
 ***
 ## Conclusion
-The feature importances from the Random Forest model and the coefficients from the Logistic Regression model both highlight the significant role of curricular units in the 2nd semester in predicting academic failure. Students who have more approved units in the 2nd semester demonstrate a higher likelihood of academic success. To effectively reduce the rate of academic failure, the student success team from the Instituto Politécnico de Portalegre should focus on supporting and guiding students to pass more units in the 2nd semester.
+The feature importances from the Random Forest model and the coefficients from the Logistic Regression model both highlight the significant role of curricular units in the 2nd semester in predicting academic failure. Students with more approved units in the 2nd semester demonstrate a higher likelihood of academic success. To effectively reduce the academic failure rate, the student success team from the Instituto Politécnico de Portalegre should focus on supporting and guiding students to pass more units in the 2nd semester.
 
 The Logistic Regression model emphasizes the importance of being up-to-date with tuition fees as a crucial factor in predicting academic success. Although it may not be among the top 5 feature importances for Random Forest, timely tuition fee payments are still relevant. To mitigate academic failure, the student success team should implement strategies to ensure students stay on top of their tuition fee payments, such as providing clear payment reminders and offering financial assistance when needed.
 
-Both models underscore the significance of performance-related features, including grades and evaluations in the 1st and 2nd semesters. Students who excel in these evaluations demonstrate a higher likelihood of academic success. To reduce academic failure, the student success team should closely monitor early academic performance and provide additional support or interventions to students who may be struggling in their evaluations or obtaining low grades.
+Both models underscore the significance of performance-related features, including grades and evaluations in the 1st and 2nd semesters. Students who excel in these evaluations demonstrate a higher likelihood of academic success. To reduce academic failure, the student success team should closely monitor early academic performance and provide additional support or interventions to students struggling in their evaluations or obtaining low grades.
 
 In light of these insights, I recommend the student success team from the Instituto Politécnico de Portalegre adopt a multifaceted approach. By combining academic support, monitoring tuition fee payments, and providing early interventions based on performance, the team can effectively promote student success and improve overall student outcomes. Leveraging data-driven insights, the student success team can tailor their efforts and allocate resources strategically to support students better and foster a culture of academic achievement.
 ## Insights
