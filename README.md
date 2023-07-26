@@ -105,7 +105,7 @@ By using these functions, we can begin to explore the factors affecting graduati
 
 During exploration, we identified the following trends:
 
-* Age Range and Graduation: 25-35 age group has higher enrollment and graduation rates. Age 50+ has higher dropout.
+* Age Range and Graduation: 16-24 age group has higher enrollment and graduation rates. Age 50+ has higher dropout.
 * Curricular Units and Graduation: 4-6 units show the highest graduation rate, 7+ slightly lower, and 0-3 lower.
 * Tuition Fees and Graduation: Up-to-date fees link to significantly higher graduation rates.
 * Marital Status and Graduation: Married/in a union have a higher graduation rate.
