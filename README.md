@@ -7,7 +7,9 @@
 * __Business Case__: I am a new data scientist and have joined the challenge the Instituto Politecnico de Portalegre created to classify students' academic success. Researchers at the Instituto Politecnico de Portalegre want to reduce the rate of student academic failure in higher education.
 
 # Overview
-In this case, the goal is to craft and refine a reliable model by using machine learning techniques to identify which students are at risk at earlier stages of their academic path to put strategies to support students in place to mitigate their likelihood of dropping out of higher education. While the model was trained and tested with data from higher education students in Portugal, the lag in academic success within higher education is also a challenge within the United States. Colleges and Universities face the ever-pressing challenge of identifying students who are at risk of not graduating on time and providing effective interventions to move those students back onto a positive pathway to graduation.
+The aim is to create a dependable model using machine learning techniques to spot students who may be at risk of dropping out of higher education after enrolling. By identifying these students early, we can implement strategies to support them and reduce the likelihood of them leaving college. 
+
+The model was trained and tested with higher education student data from Portugal, but it is relevant for colleges and universities in the United States as well. We also face the challenge of identifying at-risk students and providing interventions to help them graduate on time and succeed in their studies. 
 > The completion rates of (US) undergraduates within six years of enrollment stand at only __62.3%__ as of 2022.
 >
 > -- Hanneh Bareham and Chelsea Wing (bankrate.com)
