@@ -18,10 +18,10 @@ The model was trained and tested with higher education student data from Portuga
 
 We will prioritize recall in this project over precision. By prioritizing recall, we aim to reduce the number of false negatives and increase the model's ability to correctly identify and intervene with students at risk of academic failure. Minimizing the number of false negatives will help to ensure that fewer students who need educational assistance slip through the cracks and are not appropriately identified and supported.
 
-* True Positive represents the number correctly predicted positive instances.
-    * Ex. students bieng predicted to dropout and actually do dropout
+* True Positive represents the number of correctly predicted positive instances.
+    * Ex. students being predicted to dropout and actually do dropout
 * False negatives represent the number of incorrectly predicted negative instances.
-    * Ex. students being predicted to dropout but do not dropout
+    * Ex. students being predicted to drop out but do not drop out
 
 # Data Understanding and Analysis
 ***
@@ -41,7 +41,7 @@ We will prioritize recall in this project over precision. By prioritizing recall
     - Ex. students predicted to drop out but do not drop out
 
 ## Source of Data
-The machine learning repository at the University of California(Irvine) contains dataset for evaluating machine learning techniques. The dataset used in this exploration is from this repository and can be found [here](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success). This dataset was created as a part of a project to reduce academic dropout and failure rates in higher education. Using machine learning, this project aims to identify at-risk students early  and provide support to improve their likelihood of on-time graduation.  
+The machine learning repository at the University of California(Irvine) contains a dataset for evaluating machine learning techniques. The dataset used in this exploration is from this repository and can be found [here](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success). This dataset was created as a part of a project to reduce academic dropout and failure rates in higher education. Using machine learning, this project aims to identify at-risk students early  and provide support to improve their likelihood of on-time graduation.  
 
 
 ## Description of Data
@@ -89,7 +89,7 @@ The <code>obtain_data</code> method calls the <code>load_data</code> method and 
 ### Scrub
 The <code>ScrubData</code> class defines a constructor to initialize the data attribute with a pandas DataFrame. It provides a method check_placeholders to check for placeholders  *(e.g., '?', '#', 'NaN', 'null', 'N/A', '-')* and replaces them if found;  otherwise, it prints a message indicating that no placeholders were detected.
 
-Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function and the resulting cleaned DataFrame is returned.
+Additionally, the class includes a <code>clean</code> method to perform data-cleaning operations. In this method, rows containing missing data are removed using  <code>dropna</code> function, and the resulting cleaned DataFrame is returned.
 
 ### Explore
 After obtaining the dataset using the <code>ObtainData</code> class and cleaning it with the <code>ScrubData</code> class, the <coode>ExploreData</code> class can be used to analyze and explore the cleaned dataset further. The <code>ExploreData</code> class allows us to understand the data and identify any patterns or insights that could be beneficial for the subsequent analysis or decision-making processes.
@@ -198,11 +198,11 @@ Our code displays a confusion matrix, the most pertinent features, and their cor
 * The top 5 feature importances are identified and displayed for various models (Random Forest, SVM, Decision Trees, K Nearest neighbors), with a notification for models without feature importances.
 * The random forest is the most performative model with a recall score of __0.76__
 * The confusion matrix for random forest suggests that our predicts student dropouts and graduates much better than it predicts students who are enrolled: 
-  - Dropout as Dropout prediction: correct 76 out of 100 times
-  - Graduate as Graduate prediction: correct 93 out of 100 times
-  - Enrolled as Enrolled prediction: correct 30 out of 100 times
-  - Enrolled as Dropout prediction: correct 26 out of 100 times
-  - Graduated as Dropout prediction: correct 3 out of 100 times
+  - Dropout as a Dropout prediction: correct 76 out of 100 times
+  - Graduate as a Graduate prediction: correct 93 out of 100 times
+  - Enrolled as an Enrolled prediction: correct 30 out of 100 times
+  - Enrolled as a Dropout prediction: correct 26 out of 100 times
+  - Graduated as a Dropout prediction: correct 3 out of 100 times
 
 Top 5 Coefficients for Logistic Regression:
 - Curricular units 2nd sem (approved): 1.4406130311414413
