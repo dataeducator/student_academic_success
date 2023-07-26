@@ -4,7 +4,7 @@
 
 # Business Understanding:
 * __Stakeholder__: Instituto Politecnico de Portalegre
-* __Business Case__: I Researchers at the Instituto Politecnico de Portalegre want to reduce the rate of student academic failure in higher education.
+* __Business Case__: I am a new data scientist and have joined the challenge the Instituto Politecnico de Portalegre created to classify students' academic success. Researchers at the Instituto Politecnico de Portalegre want to reduce the rate of student academic failure in higher education.
 
 # Overview
 The aim is to create a dependable model using machine learning techniques to spot students who may be at risk of dropping out of higher education after enrolling. By identifying these students early, we can implement strategies to support them and reduce the likelihood of them leaving college. 
